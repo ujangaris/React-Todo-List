@@ -57,3 +57,14 @@
         2.  pengujian pada browser:
             - lakukan delete taks, jika berhasil data akan terhapus setiap kali icon trash di klik
             - jika kosong akan menampilkan kalimat no task..
+
+## Mark tasks as done or completed Function
+
+    Todo:
+
+        1.  App.js
+            - function markDone()
+            - memasang function markDone() pada button
+            - pasang kodisi jika task sudah di checklis tombol edit ilang
+        2.  pengujian pada browser:
+            - lakukan klik centang pada taks, jika berhasil title taks akan tercoret dan button edit akan terhapus

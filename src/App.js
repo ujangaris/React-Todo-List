@@ -46,7 +46,20 @@ function App() {
   }
 
   // Mark tasks as done or completed
-  const markDone = (id) => {}
+  const markDone = (id) => {
+    // map the tasks
+    let newTask = toDo.map((task) => {
+      // check if the id is same
+      if (task.id === id) {
+        // change the status
+        return { ...task, status: !task.status }
+      }
+      // return the task
+      return task
+    })
+    // update the state
+    setToDo(newTask)
+  }
 
   // Cancel update
   const cancelUpdate = () => {}
@@ -100,12 +113,19 @@ function App() {
                 {/* pasang icon fontawesome */}
                 {/* pasang keterangan setiap icon */}
                 <div className="iconsWrap">
-                  <span title="Completed / Not Completed">
+                  {/* pasang fcuntion markDown */}
+                  <span
+                    title="Completed / Not Completed"
+                    onClick={(e) => markDone(task.id)}
+                  >
                     <FontAwesomeIcon icon={faCircleCheck} />
                   </span>
-                  <span title="Edit">
-                    <FontAwesomeIcon icon={faPen} />
-                  </span>
+                  {/* kodisi jika task sudah di checklis tombol edit ilang */}
+                  {task.status ? null : (
+                    <span title="Edit">
+                      <FontAwesomeIcon icon={faPen} />
+                    </span>
+                  )}
                   {/* memasang function delete */}
                   <span title="Delete" onClick={() => deleteTask(task.id)}>
                     <FontAwesomeIcon icon={faTrash} />
