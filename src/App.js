@@ -24,7 +24,18 @@ function App() {
 
   // add tasks
 
-  const addTask = () => {}
+  const addTask = () => {
+    if (newTask) {
+      // get the last id
+      let num = toDo.length + 1
+      // create new entry
+      let newEntry = { id: num, title: newTask, status: false }
+      // add new entry to todo
+      setToDo([...toDo, newEntry])
+      // clear input
+      setNewTask("")
+    }
+  }
 
   // Delete tasks
   const deleteTask = (id) => {}
@@ -48,6 +59,23 @@ function App() {
       <h2>To Do List App ( ReactJS)</h2>
       <br />
       <br />
+
+      {/* Add Task */}
+      <div className="row">
+        <div className="col">
+          <input
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            className="form-control form-control-lg"
+          />
+        </div>
+        <div className="col-auto">
+          <button onClick={addTask} className="btn btn-success btn-lg">
+            Add Task
+          </button>
+        </div>
+      </div>
+      <br />
       {/* Display ToDos */}
       {/* logic jika todo tidak ada datanya */}
       {toDo && toDo.length ? "" : "No Tasks..."}
@@ -65,14 +93,15 @@ function App() {
                   <span className="taskText">{task.title}</span>
                 </div>
                 {/* pasang icon fontawesome */}
+                {/* pasang keterangan setiap icon */}
                 <div className="iconsWrap">
-                  <span>
+                  <span title="Completed / Not Completed">
                     <FontAwesomeIcon icon={faCircleCheck} />
                   </span>
-                  <span>
+                  <span title="Edit">
                     <FontAwesomeIcon icon={faPen} />
                   </span>
-                  <span>
+                  <span title="Delete">
                     <FontAwesomeIcon icon={faTrash} />
                   </span>
                 </div>

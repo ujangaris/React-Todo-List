@@ -34,3 +34,15 @@
             - memasang fontawesome
         2.  App.css
             styling icon
+
+## addTask function dan keterangan icon
+
+    Todo:
+
+        1.  App.js
+            - function addTask
+            - form input dan button addTask
+            - pasang keterangan setiap icon saat cursor diarahkan
+        2.  pengujian pada browser:
+            - lakukan add taks, jika berhasil akan ada data baru yang barusan di buat
+            - arahkan cursor ke tiap2 icon
