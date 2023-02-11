@@ -62,10 +62,19 @@ function App() {
   }
 
   // Cancel update
-  const cancelUpdate = () => {}
+  const cancelUpdate = () => {
+    setUpdateData("")
+  }
 
   // Change taks for update
-  const changeTask = (e) => {}
+  const changeTask = (e) => {
+    let newEntry = {
+      id: updateData.id,
+      title: e.target.value,
+      status: updateData.status ? true : false,
+    }
+    setUpdateData(newEntry)
+  }
 
   // Update tasks
   const updateTask = () => {}
@@ -77,7 +86,21 @@ function App() {
       <h2>To Do List App ( ReactJS)</h2>
       <br />
       <br />
-
+      {/* Update Task */}
+      <div className="row">
+        <div className="col">
+          <input
+            value={updateData && updateData.title}
+            onChange={(e) => changeTask(e)}
+            className="form-control form-control-lg "
+          />
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-success btn-lg mr-20">Update</button>
+          <button className="btn btn-warning btn-lg"> Cancel</button>
+        </div>
+      </div>
+      <br />
       {/* Add Task */}
       <div className="row">
         <div className="col">
@@ -122,7 +145,16 @@ function App() {
                   </span>
                   {/* kodisi jika task sudah di checklis tombol edit ilang */}
                   {task.status ? null : (
-                    <span title="Edit">
+                    <span
+                      title="Edit"
+                      onClick={() =>
+                        setUpdateData({
+                          id: task.id,
+                          title: task.title,
+                          status: task.status ? true : false,
+                        })
+                      }
+                    >
                       <FontAwesomeIcon icon={faPen} />
                     </span>
                   )}

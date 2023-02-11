@@ -68,3 +68,15 @@
             - pasang kodisi jika task sudah di checklis tombol edit ilang
         2.  pengujian pada browser:
             - lakukan klik centang pada taks, jika berhasil title taks akan tercoret dan button edit akan terhapus
+
+## Function cangeTask()
+
+    Todo:
+
+        1.  App.js
+            - function changeTask()
+            - memasang function changeTask() pada insert onChange()
+            - function cancelUpdate()
+        2.  pengujian pada browser:
+            - lakukan klik icon pencil pada taks, jika berhasil title akan berada pada form update
+            - coba ubah tulisan pada form update
