@@ -46,3 +46,14 @@
         2.  pengujian pada browser:
             - lakukan add taks, jika berhasil akan ada data baru yang barusan di buat
             - arahkan cursor ke tiap2 icon
+
+## Delete tasks function
+
+    Todo:
+
+        1.  App.js
+            - function Delete tasks
+            - memasang function deleteTask pada button
+        2.  pengujian pada browser:
+            - lakukan delete taks, jika berhasil data akan terhapus setiap kali icon trash di klik
+            - jika kosong akan menampilkan kalimat no task..
