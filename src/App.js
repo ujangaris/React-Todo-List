@@ -77,7 +77,12 @@ function App() {
   }
 
   // Update tasks
-  const updateTask = () => {}
+  const updateTask = () => {
+    let filterRecords = [...toDo].filter((task) => task.id !== updateData.id)
+    let updateObject = [...filterRecords, updateData]
+    setToDo(updateObject)
+    setUpdateData("")
+  }
 
   return (
     <div className="container App">
@@ -86,37 +91,56 @@ function App() {
       <h2>To Do List App ( ReactJS)</h2>
       <br />
       <br />
-      {/* Update Task */}
-      <div className="row">
-        <div className="col">
-          <input
-            value={updateData && updateData.title}
-            onChange={(e) => changeTask(e)}
-            className="form-control form-control-lg "
-          />
-        </div>
-        <div className="col-auto">
-          <button className="btn btn-success btn-lg mr-20">Update</button>
-          <button className="btn btn-warning btn-lg"> Cancel</button>
-        </div>
-      </div>
-      <br />
-      {/* Add Task */}
-      <div className="row">
-        <div className="col">
-          <input
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            className="form-control form-control-lg"
-          />
-        </div>
-        <div className="col-auto">
-          <button onClick={addTask} className="btn btn-success btn-lg">
-            Add Task
-          </button>
-        </div>
-      </div>
-      <br />
+      {/* kondisi jika tombol update di klik akan menampilkan form update */}
+      {updateData && updateData ? (
+        <>
+          {/* Update Task */}
+          <div className="row">
+            <div className="col">
+              {/* memasang function changeTask */}
+              <input
+                value={updateData && updateData.title}
+                onChange={(e) => changeTask(e)}
+                className="form-control form-control-lg "
+              />
+            </div>
+            <div className="col-auto">
+              {/* memasang function updateTask */}
+              <button
+                onClick={updateTask}
+                className="btn btn-success btn-lg mr-20"
+              >
+                Update
+              </button>
+              {/* pasang function cancel update */}
+              <button onClick={cancelUpdate} className="btn btn-warning btn-lg">
+                {" "}
+                Cancel
+              </button>
+            </div>
+          </div>
+          <br />
+        </>
+      ) : (
+        <>
+          {/* Add Task */}
+          <div className="row">
+            <div className="col">
+              <input
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+                className="form-control form-control-lg"
+              />
+            </div>
+            <div className="col-auto">
+              <button onClick={addTask} className="btn btn-success btn-lg">
+                Add Task
+              </button>
+            </div>
+          </div>
+          <br />
+        </>
+      )}
       {/* Display ToDos */}
       {/* logic jika todo tidak ada datanya */}
       {toDo && toDo.length ? "" : "No Tasks..."}

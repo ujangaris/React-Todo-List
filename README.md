@@ -80,3 +80,19 @@
         2.  pengujian pada browser:
             - lakukan klik icon pencil pada taks, jika berhasil title akan berada pada form update
             - coba ubah tulisan pada form update
+
+## Function updateTask() & memasang function cancelUpdate() pada button
+
+    Todo:
+
+        1.  App.js
+            - function updateTask()
+            - memasang function updateTask() pada onClick() di dalam button update
+            - memasang function cancelUpdate() pada onClick() di dalam button cancel update
+            - memberi kondisi jika tombol update di klik akan menampilkan form update jika tidak form addTask yang tampil
+        2.  pengujian pada browser:
+            - lakukan klik icon pencil pada taks, jika berhasil form akan berganti menjadi form update
+              dan  title akan berada pada form update
+            - coba ubah tulisan pada form update, jika berhasil terupdate maka setup yang kita lakukan berhasil
+            - jika tidak jadi mengupdate klik tombol cancel, maka form update akan terganti dengan form addTask
+              dan data tidak berubah
