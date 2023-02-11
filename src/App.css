@@ -33,9 +33,36 @@ body {
   justify-content: center;
 }
 
+.taskBg .taskText {
+  flex: 1;
+}
 /* untuk membuat tulisan ada coreatannya */
 .taskBg .done .taskText {
   text-decoration: line-through;
   opacity: 0.3;
-  flex: 1;
+}
+
+/* style icon */
+.taskBg .iconsWrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  width: auto;
+  display: inline-block;
+}
+/* akhir style icon */
+
+.taskBg .iconsWrap span {
+  display: inline-block;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+  color: #00ff89;
+}
+.taskBg .iconsWrap span:hover {
+  color: yellow;
+}
+
+.mr-20 {
+  margin-right: 20px;
 }

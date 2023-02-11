@@ -64,6 +64,18 @@ function App() {
                   {/* data todo */}
                   <span className="taskText">{task.title}</span>
                 </div>
+                {/* pasang icon fontawesome */}
+                <div className="iconsWrap">
+                  <span>
+                    <FontAwesomeIcon icon={faCircleCheck} />
+                  </span>
+                  <span>
+                    <FontAwesomeIcon icon={faPen} />
+                  </span>
+                  <span>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </span>
+                </div>
               </div>
             </React.Fragment>
           )

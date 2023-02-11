@@ -25,3 +25,12 @@
             - Display ToDos
         2.  App.css
             styling css
+
+## Memasang Icon Fontawesome & styling
+
+    Todo:
+
+        1.  App.js
+            - memasang fontawesome
+        2.  App.css
+            styling icon
