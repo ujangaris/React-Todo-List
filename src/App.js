@@ -1,12 +1,11 @@
 import React, { useState } from "react"
+
 import "bootstrap/dist/css/bootstrap.min.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faCircleCheck,
-  faPen,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons"
+
 import "./App.css"
+import UpdateForm from "./component/UpdateForm"
+import AddtaskForm from "./component/AddTaskForm.jsx"
+import ToDo from "./component/ToDo.jsx"
 
 function App() {
   // Tasks (ToDO List) State
@@ -93,104 +92,31 @@ function App() {
       <br />
       {/* kondisi jika tombol update di klik akan menampilkan form update */}
       {updateData && updateData ? (
-        <>
-          {/* Update Task */}
-          <div className="row">
-            <div className="col">
-              {/* memasang function changeTask */}
-              <input
-                value={updateData && updateData.title}
-                onChange={(e) => changeTask(e)}
-                className="form-control form-control-lg "
-              />
-            </div>
-            <div className="col-auto">
-              {/* memasang function updateTask */}
-              <button
-                onClick={updateTask}
-                className="btn btn-success btn-lg mr-20"
-              >
-                Update
-              </button>
-              {/* pasang function cancel update */}
-              <button onClick={cancelUpdate} className="btn btn-warning btn-lg">
-                {" "}
-                Cancel
-              </button>
-            </div>
-          </div>
-          <br />
-        </>
+        <UpdateForm
+          updateData={updateData}
+          updateTask={updateTask}
+          cancelUpdate={cancelUpdate}
+          changeTask={changeTask}
+        />
       ) : (
-        <>
-          {/* Add Task */}
-          <div className="row">
-            <div className="col">
-              <input
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                className="form-control form-control-lg"
-              />
-            </div>
-            <div className="col-auto">
-              <button onClick={addTask} className="btn btn-success btn-lg">
-                Add Task
-              </button>
-            </div>
-          </div>
-          <br />
-        </>
+        /* panggil component AddtaskForm */
+        <AddtaskForm
+          newTask={newTask}
+          setNewTask={setNewTask}
+          addTask={addTask}
+        />
       )}
       {/* Display ToDos */}
       {/* logic jika todo tidak ada datanya */}
       {toDo && toDo.length ? "" : "No Tasks..."}
       {/* menampilkan data dari todo dengan map */}
-      {toDo &&
-        toDo.map((task, index) => {
-          return (
-            <React.Fragment key={task.id}>
-              <div className="col taskBg">
-                {/* kondisi jika status bernilai done , maka tulisan todo akan dicoret */}
-                <div className={task.status ? "done" : ""}>
-                  {/* nomro urut todo */}
-                  <span className="taskNumber">{index + 1}</span>
-                  {/* data todo */}
-                  <span className="taskText">{task.title}</span>
-                </div>
-                {/* pasang icon fontawesome */}
-                {/* pasang keterangan setiap icon */}
-                <div className="iconsWrap">
-                  {/* pasang fcuntion markDown */}
-                  <span
-                    title="Completed / Not Completed"
-                    onClick={(e) => markDone(task.id)}
-                  >
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  {/* kodisi jika task sudah di checklis tombol edit ilang */}
-                  {task.status ? null : (
-                    <span
-                      title="Edit"
-                      onClick={() =>
-                        setUpdateData({
-                          id: task.id,
-                          title: task.title,
-                          status: task.status ? true : false,
-                        })
-                      }
-                    >
-                      <FontAwesomeIcon icon={faPen} />
-                    </span>
-                  )}
-                  {/* memasang function delete */}
-                  <span title="Delete" onClick={() => deleteTask(task.id)}>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </span>
-                </div>
-              </div>
-            </React.Fragment>
-          )
-        })}
+
+      <ToDo
+        toDo={toDo}
+        setUpdateData={setUpdateData}
+        deleteTask={deleteTask}
+        markDone={markDone}
+      />
     </div>
   )
 }

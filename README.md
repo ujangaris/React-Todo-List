@@ -96,3 +96,25 @@
             - coba ubah tulisan pada form update, jika berhasil terupdate maka setup yang kita lakukan berhasil
             - jika tidak jadi mengupdate klik tombol cancel, maka form update akan terganti dengan form addTask
               dan data tidak berubah
+
+## Aplikasikan menjadi Components
+
+    Todo:
+
+        1.  src/components/ToDo.jsx
+            - buat functional ToDo
+            - cut code dari App.js bagian menampilkan data dari todo dengan map kemudian pastekan di Todo.jsx
+            - cut dan import Fontawesome dan icon svgnya
+        2.  src/components/AddTaskForm.jsx
+            - buat functional AddTaskForm
+            - cut code dari App.js bagian Add Task kemudian pastekan di AddTaskForm
+        3.  src/components/UpdateForm.jsx- buat functional AddTaskForm
+            - buat functional UpdateForm
+            - cut code dari App.js bagian Update Task kemudian pastekan di UpdateForm
+        4.  src/App.js
+            - panggil props ToDo
+            - panggil props AddTaskForm
+            - panggil props UpdateForm
+        5.  pengujian pada browser:
+            - lakukan semua action dari addTask, UpdateTask, cheklist Task, dan delete
+              jika semua berjalan normal maka setup yang kita lakukan berhasil.
