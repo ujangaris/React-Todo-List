@@ -9,52 +9,55 @@ import React from "react"
 const ToDo = ({ toDo, setUpdateData, deleteTask, markDone }) => {
   return (
     <>
+      {/* sorting  pada array toDo yang mengurutkan elemen-elemennya berdasarkan nilai properti id secara menaik  */}
       {toDo &&
-        toDo.map((task, index) => {
-          return (
-            <React.Fragment key={task.id}>
-              <div className="col taskBg">
-                {/* kondisi jika status bernilai done , maka tulisan todo akan dicoret */}
-                <div className={task.status ? "done" : ""}>
-                  {/* nomro urut todo */}
-                  <span className="taskNumber">{index + 1}</span>
-                  {/* data todo */}
-                  <span className="taskText">{task.title}</span>
-                </div>
-                {/* pasang icon fontawesome */}
-                {/* pasang keterangan setiap icon */}
-                <div className="iconsWrap">
-                  {/* pasang fcuntion markDown */}
-                  <span
-                    title="Completed / Not Completed"
-                    onClick={(e) => markDone(task.id)}
-                  >
-                    <FontAwesomeIcon icon={faCircleCheck} />
-                  </span>
-                  {/* kodisi jika task sudah di checklis tombol edit ilang */}
-                  {task.status ? null : (
+        toDo
+          .sort((a, b) => (a.id > b.id ? 1 : -1))
+          .map((task, index) => {
+            return (
+              <React.Fragment key={task.id}>
+                <div className="col taskBg">
+                  {/* kondisi jika status bernilai done , maka tulisan todo akan dicoret */}
+                  <div className={task.status ? "done" : ""}>
+                    {/* nomro urut todo */}
+                    <span className="taskNumber">{index + 1}</span>
+                    {/* data todo */}
+                    <span className="taskText">{task.title}</span>
+                  </div>
+                  {/* pasang icon fontawesome */}
+                  {/* pasang keterangan setiap icon */}
+                  <div className="iconsWrap">
+                    {/* pasang fcuntion markDown */}
                     <span
-                      title="Edit"
-                      onClick={() =>
-                        setUpdateData({
-                          id: task.id,
-                          title: task.title,
-                          status: task.status ? true : false,
-                        })
-                      }
+                      title="Completed / Not Completed"
+                      onClick={(e) => markDone(task.id)}
                     >
-                      <FontAwesomeIcon icon={faPen} />
+                      <FontAwesomeIcon icon={faCircleCheck} />
                     </span>
-                  )}
-                  {/* memasang function delete */}
-                  <span title="Delete" onClick={() => deleteTask(task.id)}>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </span>
+                    {/* kodisi jika task sudah di checklis tombol edit ilang */}
+                    {task.status ? null : (
+                      <span
+                        title="Edit"
+                        onClick={() =>
+                          setUpdateData({
+                            id: task.id,
+                            title: task.title,
+                            status: task.status ? true : false,
+                          })
+                        }
+                      >
+                        <FontAwesomeIcon icon={faPen} />
+                      </span>
+                    )}
+                    {/* memasang function delete */}
+                    <span title="Delete" onClick={() => deleteTask(task.id)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </React.Fragment>
-          )
-        })}
+              </React.Fragment>
+            )
+          })}
     </>
   )
 }

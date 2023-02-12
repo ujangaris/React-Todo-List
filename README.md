@@ -118,3 +118,15 @@
         5.  pengujian pada browser:
             - lakukan semua action dari addTask, UpdateTask, cheklist Task, dan delete
               jika semua berjalan normal maka setup yang kita lakukan berhasil.
+
+## Perbaikan style css dan sorting berdasarkan id task
+
+    Todo:
+
+        1.  src/components/ToDo.jsx
+            - sorting  pada array toDo yang mengurutkan elemen-elemennya berdasarkan nilai properti id secara menaik
+        2.  src/App.css
+            - perbaikan code css untuk background-color
+        3.  pengujian pada browser:
+            - lakukan semua action dari addTask, UpdateTask (urutan akan tetap sama sesuai id nya), cheklist Task, dan delete
+              jika semua berjalan normal maka setup yang kita lakukan berhasil.
